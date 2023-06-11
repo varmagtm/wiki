@@ -1,0 +1,72 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="20230610-3-insert-document-document1" author="Nagendra Varma">
+        <insert tableName="DOCUMENT">
+            <column name="title" value="document1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20230610-4-insert-document-document2" author="Nagendra Varma">
+        <insert tableName="DOCUMENT">
+            <column name="title" value="document2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20230610-5-insert-document-document3" author="Nagendra Varma">
+        <insert tableName="DOCUMENT">
+            <column name="title" value="document3"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20230610-6-insert-document-document4" author="Nagendra Varma">
+        <insert tableName="DOCUMENT">
+            <column name="title" value="document4"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20230610-7-insert-document-revision-1-document1" author="Nagendra Varma">
+        <insert tableName="DOCUMENT_REVISION">
+            <column name="document_id" value="1"/>
+            <column name="content" value="Revision 1 for Document 1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20230610-8-insert-document-revision-2-document1" author="Nagendra Varma">
+        <insert tableName="DOCUMENT_REVISION">
+            <column name="document_id" value="1"/>
+            <column name="content" value="Revision 2 for Document 1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20230610-9-insert-document-revision-1-document2" author="Nagendra Varma">
+        <insert tableName="DOCUMENT_REVISION">
+            <column name="document_id" value="2"/>
+            <column name="content" value="Revision 1 for Document 2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20230610-10-insert-document-revision-2-document2" author="Nagendra Varma">
+        <insert tableName="DOCUMENT_REVISION">
+            <column name="document_id" value="2"/>
+            <column name="content" value="Revision 2 for Document 2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20230610-11-insert-document-revision-1-document3" author="Nagendra Varma">
+        <insert tableName="DOCUMENT_REVISION">
+            <column name="document_id" value="3"/>
+            <column name="content" value="Revision 1 for Document 3"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20230610-12-insert-document-revision-1-document4" author="Nagendra Varma">
+        <insert tableName="DOCUMENT_REVISION">
+            <column name="document_id" value="4"/>
+            <column name="content" value="Revision 1 for Document 4"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
