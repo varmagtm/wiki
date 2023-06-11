@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15.3-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      # Mount the Postgres volume into the DB container to retain the data
+      - pgvolume:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=wiki
+      - PGDATA=/tmp
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./src/main/resources/application.yml:/app/application.yml
+    depends_on:
+      - postgres
+
+volumes:
+  # Create a volume for Postgress database
+  pgvolume:
