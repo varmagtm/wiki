@@ -30,7 +30,7 @@ public class DocumentServiceImpl implements DocumentService {
             log.debug("Getting all titles");
             allTitles = this.documentRepository.findAllTitles();
         } catch (Exception e) {
-            log.error("Error in getting all titles");
+            log.error("Error in getting all titles", e);
             throw new DataAccessException("Error in getting all titles", e);
         }
         if (CollectionUtils.isEmpty(allTitles)) {
@@ -47,7 +47,8 @@ public class DocumentServiceImpl implements DocumentService {
             log.debug("Getting revisions for title [{}]", docTitle);
             revisions = this.documentRepository.findRevisionsByTitle(docTitle);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            log.error("Error in getting document revisions", e);
+            throw new DataAccessException("Error in getting document revisions", e);
         }
         if (CollectionUtils.isEmpty(revisions)) {
             log.warn("No revisions found for title [{}]", docTitle);
@@ -76,6 +77,7 @@ public class DocumentServiceImpl implements DocumentService {
         try {
             revisions = this.documentRepository.findLatestDocumentAtTimestamp(title, timestamp);
         } catch (Exception e) {
+            log.error("Error while finding latest document at given timestamp", e);
             throw new DataAccessException("Error while finding latest document at given timestamp", e);
         }
         if (CollectionUtils.isEmpty(revisions)) {
@@ -103,7 +105,8 @@ public class DocumentServiceImpl implements DocumentService {
         try {
             revisions = this.documentRepository.findLatestContentByTitle(title);
         } catch (Exception e) {
-            throw new DataAccessException("Error while finding latest document at given timestamp", e);
+            log.error("Error while finding latest document revision", e);
+            throw new DataAccessException("Error while finding latest document revision", e);
         }
         if (CollectionUtils.isEmpty(revisions)) {
             throw new NoDataFoundException("No revisions found for the " +
@@ -132,7 +135,8 @@ public class DocumentServiceImpl implements DocumentService {
             log.error("No document found with the title - " + docTitle);
             throw e;
         } catch (Exception e) {
-            throw new DataAccessException("Error while finding latest document at given timestamp", e);
+            log.error("Error while adding a new revision to document", e);
+            throw new DataAccessException("Error while adding a new revision to document", e);
         }
         return revisionId;
     }
