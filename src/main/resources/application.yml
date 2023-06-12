@@ -18,3 +18,10 @@ spring:
 springdoc:
   api-docs:
     path: /api-docs
+
+logging:
+  level:
+    com:
+      moodys:
+        ma:
+          wiki: DEBUG
